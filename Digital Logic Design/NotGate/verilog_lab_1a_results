@@ -1,0 +1,43 @@
+#! /opt/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "/opt/local/lib/ivl/system.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/local/lib/ivl/va_math.vpi";
+S_0x137e05080 .scope module, "not_gate_tb" "not_gate_tb" 2 3;
+ .timescale -8 -9;
+v0x137e17440_0 .var "A", 0 0;
+v0x137e174f0_0 .net "Y", 0 0, L_0x137e175a0;  1 drivers
+S_0x137e07300 .scope module, "uut" "not_gate_s" 2 8, 3 2 0, S_0x137e05080;
+ .timescale -8 -9;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "y";
+L_0x137e175a0 .functor NOT 1, v0x137e17440_0, C4<0>, C4<0>, C4<0>;
+v0x137e07470_0 .net "a", 0 0, v0x137e17440_0;  1 drivers
+v0x137e17390_0 .net "y", 0 0, L_0x137e175a0;  alias, 1 drivers
+    .scope S_0x137e05080;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x137e17440_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x137e17440_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 15 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x137e05080;
+T_1 ;
+    %vpi_call 2 19 "$dumpfile", "verilog_1a_simulation.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars", 32'sb00000000000000000000000000000001, v0x137e17440_0, v0x137e174f0_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "verilog_lab_1a_tb.v";
+    "verilog_lab_1a.v";

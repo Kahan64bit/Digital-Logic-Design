@@ -1,0 +1,64 @@
+#! /opt/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 9;
+:vpi_module "/opt/local/lib/ivl/system.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/local/lib/ivl/va_math.vpi";
+S_0x13d705700 .scope module, "all_gates_tb" "all_gates_tb" 2 2;
+ .timescale -8 -9;
+v0x600000fac360_0 .var "A", 0 0;
+v0x600000fac3f0_0 .var "B", 0 0;
+v0x600000fac480_0 .net "OUT_AND", 0 0, L_0x6000016ac5b0;  1 drivers
+v0x600000fac510_0 .net "OUT_NOT", 0 0, L_0x6000016ac540;  1 drivers
+S_0x13d704080 .scope module, "uut" "all_gates_s" 2 7, 3 2 0, S_0x13d705700;
+ .timescale -8 -9;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "not_out";
+    .port_info 3 /OUTPUT 1 "and_out";
+L_0x6000016ac540 .functor NOT 1, v0x600000fac360_0, C4<0>, C4<0>, C4<0>;
+L_0x6000016ac5b0 .functor AND 1, v0x600000fac360_0, v0x600000fac3f0_0, C4<1>, C4<1>;
+v0x600000fac120_0 .net "a", 0 0, v0x600000fac360_0;  1 drivers
+v0x600000fac1b0_0 .net "and_out", 0 0, L_0x6000016ac5b0;  alias, 1 drivers
+v0x600000fac240_0 .net "b", 0 0, v0x600000fac3f0_0;  1 drivers
+v0x600000fac2d0_0 .net "not_out", 0 0, L_0x6000016ac540;  alias, 1 drivers
+    .scope S_0x13d705700;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600000fac360_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600000fac3f0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600000fac360_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600000fac3f0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600000fac360_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x600000fac3f0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600000fac360_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x600000fac3f0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 18 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x13d705700;
+T_1 ;
+    %vpi_call 2 22 "$dumpfile", "verilog_lab_1b.vcd" {0 0 0};
+    %vpi_call 2 23 "$dumpvars", 32'sb00000000000000000000000000000001, v0x600000fac360_0, v0x600000fac3f0_0, v0x600000fac510_0, v0x600000fac480_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "verilog_lab_1b_tb.v";
+    "verilog_lab_1b.v";
